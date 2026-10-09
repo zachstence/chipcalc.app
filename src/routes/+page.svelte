@@ -107,5 +107,24 @@
 	<input type="number" class="input" bind:value={targetStackCount} />
 </label>
 
-<pre>Values<br />{JSON.stringify(chipValues, null, 2)}</pre>
-<pre>Stack<br />{JSON.stringify(stack, null, 2)}</pre>
+<hr />
+
+<h2>Stack</h2>
+<table class="[&_td]:border [&_td]:p-2 [&_th]:border [&_th]:p-2">
+	<thead>
+		<tr>
+			<th>Color</th>
+			<th>Value</th>
+			<th>Count</th>
+		</tr>
+	</thead>
+	<tbody>
+		{#each chips as { id }, i (i)}
+			<tr>
+				<td>{id}</td>
+				<td>{chipValues[id]}</td>
+				<td>{stack[id]}</td>
+			</tr>
+		{/each}
+	</tbody>
+</table>
