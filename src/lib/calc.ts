@@ -53,7 +53,7 @@ export const calc = ({
 	bankReserve,
 	bank,
 	targetStackCount
-}: CalcArgs): ChipCollection => {
+}: CalcArgs): { [chipId: string]: number } => {
 	/** Sorted by increasing value and decreasing count */
 	const sortedChipIds = Object.entries(bank)
 		.sort(([_, { value: valueA, count: countA }], [__, { value: valueB, count: countB }]) => {
@@ -138,7 +138,7 @@ export const calc = ({
 
 	console.log('done', { stack });
 
-	return stack;
+	return Object.fromEntries(Object.entries(stack).map(([chipId, { count }]) => [chipId, count]));
 };
 
 /**
